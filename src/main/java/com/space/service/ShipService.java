@@ -83,7 +83,8 @@ public class ShipService {
             if (after == null && before == null)
                 return null;
             if (after == null) {
-                Date beforeDate = new  Date(before - 31536000000L);
+                //Date beforeDate = new  Date(before - 31536000000L);
+                Date beforeDate = new  Date(before);
                 return cb.lessThanOrEqualTo(root.get("prodDate"), beforeDate);
             }
             if (before == null) {
@@ -91,7 +92,8 @@ public class ShipService {
                 return cb.greaterThanOrEqualTo(root.get("prodDate"), afterDate);
             }
             Date afterDate = new Date(after);
-            Date beforeDate = new Date(before - 31536000000L);
+            //Date beforeDate = new Date(before - 31536000000L);
+            Date beforeDate = new Date(before);
             return cb.between(root.get("prodDate"), afterDate, beforeDate);
         };
     }
